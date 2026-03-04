@@ -85,7 +85,24 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        display: ["'Playfair Display'", "serif"],
+        body: ["'Inter'", "sans-serif"],
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: { addUtilities: (utils: Record<string, Record<string, string>>) => void }) {
+      addUtilities({
+        ".hide-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+        ".hide-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    },
+  ],
 } satisfies Config;
