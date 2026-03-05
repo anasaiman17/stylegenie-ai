@@ -49,134 +49,134 @@ export interface OutfitHistoryItem extends OutfitSuggestion {
   rating?: number;
 }
 
-// ── Outfit database ──────────────────────────────────────────
+// ── Outfit database (India edition) ─────────────────────────
 const outfitDatabase: Record<string, Record<string, Record<string, Partial<OutfitSuggestion>[]>>> = {
   male: {
     casual: {
       hot: [
-        { top: "White linen shirt (short sleeve)", bottom: "Slim chino shorts", footwear: "White canvas sneakers", accessory: "Silver watch + sunglasses", styleNote: "Keep it breezy! Light fabrics in neutral tones are your best friend on hot days.", tags: ["Summer", "Minimal", "Effortless"] },
-        { top: "Graphic tee (oversized)", bottom: "Cargo shorts", footwear: "Chunky sneakers", accessory: "Cap + crossbody bag", styleNote: "Streetwear meets comfort — perfect for city exploring in the heat.", tags: ["Streetwear", "Urban", "Bold"] },
+        { top: "White kurta (short/half-sleeve linen)", bottom: "Cotton pyjama or dhoti pants", footwear: "Kolhapuri chappals", accessory: "Rudraksha bracelet + canvas jhola bag", styleNote: "Breezy Indian casual — light kora cotton or linen kurta keeps you cool and rooted in culture.", tags: ["Desi Casual", "Summer", "Ethnic Minimal"] },
+        { top: "Printed half-sleeve kurta (block print)", bottom: "Slim cotton trousers", footwear: "White mojaris or canvas sneakers", accessory: "Wooden bead bracelet + sunglasses", styleNote: "Block-print kurtas are India's answer to the graphic tee — bold, artisanal, and effortlessly cool.", tags: ["Artisanal", "Desi Streetwear", "Bold"] },
       ],
       cold: [
-        { top: "Turtleneck knit sweater", bottom: "Dark slim jeans", footwear: "Chelsea boots", accessory: "Woolen scarf + leather gloves", outerLayer: "Wool overcoat", styleNote: "Layering is the art of cold-weather fashion. Your overcoat is the statement piece.", tags: ["Classic", "Sophisticated", "Winter"] },
-        { top: "Flannel shirt over thermal", bottom: "Straight-leg jeans", footwear: "Leather boots", accessory: "Beanie + leather wallet chain", outerLayer: "Puffer jacket", styleNote: "Rugged and warm — the lumberjack aesthetic elevated.", tags: ["Rugged", "Casual", "Cozy"] },
+        { top: "Woolen Nehru jacket over full-sleeve kurta", bottom: "Churidar or straight-cut pants", footwear: "Brown leather juttis", accessory: "Pashmina muffler + silver kada", outerLayer: "Handloom wool shawl (Himachali/Kashmiri)", styleNote: "Layer a handloom shawl over a Nehru jacket for a look that's warm, sophisticated, and deeply Indian.", tags: ["Layered", "Winter Ethnic", "Classic"] },
+        { top: "Bandhgala or Prince coat kurta", bottom: "Churidar pants", footwear: "Classic leather juttis", accessory: "Gold cufflinks + pocket square", outerLayer: "Woolen Nehru jacket", styleNote: "The Bandhgala is India's most powerful formal silhouette — timeless and commanding.", tags: ["Formal", "Power", "Royal"] },
       ],
       rainy: [
-        { top: "Merino wool crewneck", bottom: "Dark trousers", footwear: "Waterproof ankle boots", accessory: "Minimalist watch", outerLayer: "Trench coat", styleNote: "Trench coats are timeless rain warriors — functional and impossibly stylish.", tags: ["Smart-Casual", "Rainy Day", "Classic"] },
+        { top: "Dark indigo kurta (cotton)", bottom: "Dark cotton trousers", footwear: "Waterproof rubber sandals (kolhapuri style)", accessory: "Compact umbrella + cloth jhola", styleNote: "Monsoon dressing: dark indigo hides rain marks. Opt for pre-washed cotton that looks better with water.", tags: ["Monsoon Ready", "Smart Casual", "Desi"] },
       ],
     },
     office: {
       hot: [
-        { top: "Light blue Oxford shirt (slim fit)", bottom: "Tailored grey trousers", footwear: "Brown derby shoes", accessory: "Leather belt + pocket square", styleNote: "Cool tones and breathable fabrics keep you sharp without overheating.", tags: ["Business", "Smart", "Professional"] },
+        { top: "Light blue formal kurta or cotton bandhgala shirt", bottom: "Tailored cotton trousers (cream/grey)", footwear: "Brown leather oxfords or juttis", accessory: "Leather belt + minimalist watch", styleNote: "Indian corporate dressing is evolving — a formal kurta with tailored trousers is modern, rooted, and professional.", tags: ["Corporate", "Smart", "Indo-Western"] },
       ],
       cold: [
-        { top: "White dress shirt + tie", bottom: "Charcoal suit trousers", footwear: "Black Oxford shoes", accessory: "Silk tie + cufflinks", outerLayer: "Fitted blazer", styleNote: "The power suit — timeless authority in charcoal and white.", tags: ["Formal", "Power", "Executive"] },
+        { top: "Formal white kurta + Nehru collar shirt", bottom: "Charcoal suit trousers", footwear: "Black leather oxfords", accessory: "Silk pocket square + cufflinks", outerLayer: "Fitted Nehru jacket (charcoal/navy)", styleNote: "A Nehru jacket over a formal kurta is the ultimate Indian power suit — wear it with confidence.", tags: ["Formal", "Executive", "Desi Power"] },
       ],
       rainy: [
-        { top: "Navy dress shirt", bottom: "Dark navy suit trousers", footwear: "Waterproof leather Oxfords", accessory: "Slim tie + umbrella", outerLayer: "Double-breasted wool blazer", styleNote: "Navy is the most forgiving office color — it repels rain stains and commands respect.", tags: ["Professional", "Rain-Ready", "Polished"] },
+        { top: "Navy formal kurta (quick-dry cotton)", bottom: "Dark navy cotton trousers", footwear: "Waterproof leather oxfords", accessory: "Slim analog watch + compact umbrella", outerLayer: "Navy cotton bandhgala jacket", styleNote: "Navy is the monsoon office champion — dark enough to hide splashes, formal enough to command respect.", tags: ["Professional", "Monsoon-Ready", "Polished"] },
       ],
     },
     party: {
       hot: [
-        { top: "Silk button-down (floral/print)", bottom: "White slim chinos", footwear: "Loafers (no socks)", accessory: "Gold chain necklace + rings", styleNote: "Resort-party chic — the confident host aesthetic.", tags: ["Party", "Bold", "Summer Vibes"] },
+        { top: "Silk kurta (jewel-tone: royal blue/emerald)", bottom: "Churidar or straight-cut salwar", footwear: "Embroidered golden juttis", accessory: "Gold chain + statement ring", styleNote: "A jewel-tone silk kurta is India's party armour — you'll look like royalty without trying.", tags: ["Festive", "Royal", "Bold"] },
       ],
       cold: [
-        { top: "Black turtleneck", bottom: "Tailored black trousers", footwear: "Chelsea boots", accessory: "Minimalist silver jewelry", styleNote: "All-black with varying textures is an infallible party formula.", tags: ["Chic", "Sleek", "Night Out"] },
+        { top: "Sherwani (dark: navy/black/burgundy)", bottom: "Churidar pants", footwear: "Embellished mojaris or formal juttis", accessory: "Brooch + maala or gold chain", outerLayer: "Embroidered stole", styleNote: "A Sherwani in a deep tone is India's equivalent of the black tuxedo — unbeatable at any celebration.", tags: ["Festive", "Royal", "Celebration"] },
       ],
       rainy: [
-        { top: "Velvet blazer over dark shirt", bottom: "Dark fitted trousers", footwear: "Leather Chelsea boots", accessory: "Pocket square + watch", styleNote: "Velvet absorbs light and adds luxury — perfect for arriving in style despite the rain.", tags: ["Luxury", "Party", "Statement"] },
+        { top: "Embroidered kurta (dark colors)", bottom: "Dark straight-cut pants", footwear: "Classic leather juttis", accessory: "Stole + watch", styleNote: "Dark embroidered kurtas are magic in the monsoon — the richness of the fabric shines even on grey evenings.", tags: ["Monsoon Festive", "Embroidered", "Statement"] },
       ],
     },
     date: {
       hot: [
-        { top: "Fitted linen shirt (pastel)", bottom: "Slim chinos (beige)", footwear: "Clean white sneakers or loafers", accessory: "Simple watch + subtle cologne", styleNote: "Soft pastels signal approachability and thoughtfulness — perfect first impression.", tags: ["Romantic", "Fresh", "Date Night"] },
+        { top: "Pastel linen kurta (blush/mint/sky blue)", bottom: "Slim white cotton trousers", footwear: "Clean mojaris or white sneakers", accessory: "Simple silver bracelet + light cologne", styleNote: "Pastels communicate softness and thoughtfulness — perfect for making a great first impression on a date.", tags: ["Romantic", "Soft", "Indo-Western Date"] },
       ],
       cold: [
-        { top: "Burgundy knit sweater", bottom: "Dark skinny jeans", footwear: "Suede Chelsea boots", accessory: "Simple silver chain", styleNote: "Burgundy is the most romantic cold-weather color — warm, deep, inviting.", tags: ["Romantic", "Cozy", "Intimate"] },
+        { top: "Maroon/wine kurta with subtle embroidery", bottom: "Dark churidar", footwear: "Suede brown juttis", accessory: "Silver kada bracelet", styleNote: "Maroon and wine tones are India's most romantic hues — warm, deep, and inviting.", tags: ["Romantic", "Ethnic Chic", "Intimate"] },
       ],
       rainy: [
-        { top: "Dark fitted shirt", bottom: "Black slim jeans", footwear: "Clean leather boots", accessory: "Leather watch", outerLayer: "Sleek trench coat", styleNote: "There's nothing more romantic than arriving perfectly dressed despite the rain.", tags: ["Mysterious", "Romantic", "Stylish"] },
+        { top: "Dark teal/midnight blue kurta", bottom: "Dark slim trousers", footwear: "Leather juttis", accessory: "Delicate silver jewelry", outerLayer: "Shawl or stole", styleNote: "Monsoon dates call for deep jewel tones — teal and midnight blue look stunning in soft evening light.", tags: ["Mysterious", "Romantic", "Monsoon Magic"] },
       ],
     },
     travel: {
       hot: [
-        { top: "Moisture-wicking polo", bottom: "Zip-off convertible pants", footwear: "Trail running sneakers", accessory: "Packable daypack + sunglasses", styleNote: "Smart adventurer — comfort without sacrificing a clean look.", tags: ["Travel", "Functional", "Explorer"] },
+        { top: "Breathable cotton kurta (light colors)", bottom: "Cotton dhoti pants or pajamas", footwear: "Kolhapuri chappals or sports sandals", accessory: "Cloth jhola + compact sunglasses", styleNote: "The classic kurta-pajama is India's OG travel outfit — comfortable for trains, temples, and everything in between.", tags: ["Travel India", "Comfortable", "Desi Explorer"] },
       ],
       cold: [
-        { top: "Base layer thermal top", bottom: "Fleece-lined tech pants", footwear: "Insulated hiking boots", accessory: "Packable down jacket + gloves", outerLayer: "Waterproof shell jacket", styleNote: "Layer up, adventure awaits. The 3-layer system keeps you warm on any journey.", tags: ["Adventure", "Layered", "Winter Travel"] },
+        { top: "Warm kurta + thermal inner", bottom: "Heavy cotton churidar or cargo pants", footwear: "Woolen closed shoes or boots", accessory: "Woolen muffler + backpack", outerLayer: "Himachali woolen jacket or quilted jacket", styleNote: "Travelling to hill stations? Layer a traditional Himachali jacket for warmth with a touch of local culture.", tags: ["Hill Station", "Adventure", "Layered Desi"] },
       ],
       rainy: [
-        { top: "Quick-dry long-sleeve shirt", bottom: "Waterproof tech pants", footwear: "Waterproof trail shoes", accessory: "Compact umbrella + waterproof backpack", outerLayer: "Packable rain jacket", styleNote: "Rain-proof travel kit — be prepared for anything.", tags: ["Travel", "Rain-Ready", "Practical"] },
+        { top: "Quick-dry cotton kurta", bottom: "Cotton trousers (dark)", footwear: "Waterproof chappals or rubber sandals", accessory: "Waterproof backpack + umbrella", outerLayer: "Packable rain poncho", styleNote: "Monsoon travel in India is an adventure — embrace it with quick-dry fabrics and your best umbrella.", tags: ["Monsoon Travel", "Practical", "India Adventure"] },
       ],
     },
   },
   female: {
     casual: {
       hot: [
-        { top: "Flowy crop top (cotton)", bottom: "High-waist linen wide-leg pants", footwear: "Strappy sandals", accessory: "Layered gold necklaces + woven bag", styleNote: "Breezy and effortlessly chic — the perfect summer casual.", tags: ["Summer", "Boho", "Effortless"] },
-        { top: "Oversized graphic tee (tied at waist)", bottom: "Mini denim skirt", footwear: "Platform sneakers", accessory: "Hoop earrings + mini backpack", styleNote: "90s revival done right — bold, playful, and totally Instagrammable.", tags: ["Streetwear", "Y2K", "Fun"] },
+        { top: "Cotton kurti (block-print / Jaipur print)", bottom: "Palazzo pants or cotton leggings", footwear: "Flat Kolhapuri chappals or juttis", accessory: "Jhumka earrings + cotton dupatta", styleNote: "A cotton kurti with palazzo pants is the quintessential Indian summer look — effortless, elegant, and breathable.", tags: ["Desi Casual", "Summer", "Block Print"] },
+        { top: "Sleeveless Anarkali kurta (short)", bottom: "Churidar leggings", footwear: "Embroidered flats", accessory: "Statement jhumkas + potli bag", styleNote: "A short Anarkali kurta has the flowy elegance of a dress with the comfort of separates.", tags: ["Festive Casual", "Feminine", "Indian Chic"] },
       ],
       cold: [
-        { top: "Chunky turtleneck sweater (cream)", bottom: "Plaid mini skirt + sheer tights", footwear: "Knee-high boots", accessory: "Wool beret + structured bag", styleNote: "Academia meets cozy — intellectual elegance for cold days.", tags: ["Dark Academia", "Cozy", "Chic"] },
-        { top: "Fitted ribbed long-sleeve", bottom: "Straight-leg corduroy pants", footwear: "Platform loafers", accessory: "Crossbody bag + layered rings", outerLayer: "Oversized blazer", styleNote: "Cozy-chic: the oversized blazer is the most versatile cold-weather piece.", tags: ["Smart Casual", "Layered", "Trendy"] },
+        { top: "Kashmiri phiran or embroidered wool kurta", bottom: "Churidar or straight-cut salwar", footwear: "Embroidered woolen juttis", accessory: "Pashmina stole + layered necklace", outerLayer: "Woolen Himachali shawl", styleNote: "The Kashmiri phiran wraps you in warmth and artistry — each embroidery stitch tells a story.", tags: ["Kashmiri Chic", "Winter", "Artisanal"] },
+        { top: "Fitted long kurta (heavy cotton/jacquard)", bottom: "Slim churidar + tights", footwear: "Block-heel juttis", accessory: "Bandhani dupatta + silver jhumkas", outerLayer: "Fitted blazer (contemporary fusion)", styleNote: "Fusion dressing: a traditional kurta with a modern blazer is India's most versatile cold-weather combo.", tags: ["Fusion", "Smart Casual", "Contemporary Indian"] },
       ],
       rainy: [
-        { top: "Fitted turtleneck", bottom: "Mom jeans", footwear: "Colorful rain boots", accessory: "Transparent umbrella + cute bucket hat", outerLayer: "Trench coat", styleNote: "Rainy days are secretly the best fashion opportunities — a great trench is iconic.", tags: ["Rainy Chic", "Classic", "Colorful"] },
+        { top: "Short kurti (dark indigo/deep green)", bottom: "Dark churidar or palazzos", footwear: "Rubber chappals or waterproof flats", accessory: "Compact umbrella + small potli", outerLayer: "Lightweight rain jacket", styleNote: "Monsoon kurtis should be short and dark — pair with waterproof footwear and a cheerful umbrella.", tags: ["Monsoon Ready", "Practical Desi", "Colorful"] },
       ],
     },
     office: {
       hot: [
-        { top: "Silk blouse (light blue/white)", bottom: "High-waist tailored trousers", footwear: "Pointed-toe heels (nude)", accessory: "Pearl earrings + structured tote", styleNote: "Polished power — silk blouse with tailored trousers is unbeatable office elegance.", tags: ["Corporate", "Polished", "Power"] },
+        { top: "Formal cotton/silk kurti (solid or subtle print)", bottom: "Straight-cut trousers or tailored salwar", footwear: "Block heels or pointed-toe flats", accessory: "Pearl jhumkas + structured tote", styleNote: "The silk kurti with tailored trousers is India's answer to the Western power suit — elegant and commanding.", tags: ["Corporate India", "Power Dressing", "Polished"] },
       ],
       cold: [
-        { top: "Fitted blazer + blouse", bottom: "Pencil skirt + sheer tights", footwear: "Block-heel pumps", accessory: "Statement necklace + leather folder", styleNote: "The pencil skirt and blazer combo is timeless executive authority.", tags: ["Executive", "Power Dressing", "Classic"] },
+        { top: "Jacquard or brocade kurti + fitted blazer", bottom: "Pencil-cut churidar or trousers", footwear: "Block-heel pumps", accessory: "Statement necklace + leather folder", styleNote: "A brocade kurti with a blazer is the ultimate Indian corporate look — boardroom-ready with cultural pride.", tags: ["Executive", "Fusion Power", "Classic"] },
       ],
       rainy: [
-        { top: "Monochrome blouse", bottom: "Wide-leg trousers (dark)", footwear: "Waterproof ankle boots with heel", accessory: "Gold chain bag", outerLayer: "Belted trench coat", styleNote: "Arrive in style — a belted trench over monochrome is sophisticated in any weather.", tags: ["Work-Ready", "Sophisticated", "Polished"] },
+        { top: "Solid silk kurti (dark tones)", bottom: "Wide-leg cotton trousers", footwear: "Waterproof block-heel boots", accessory: "Gold chain bag + dupatta", outerLayer: "Structured overcoat", styleNote: "Arrive at the office looking impeccable despite the rain — silk kurtis in dark tones are weather warriors.", tags: ["Work-Ready", "Monsoon Chic", "Polished"] },
       ],
     },
     party: {
       hot: [
-        { top: "Halter neck bodysuit (metallic)", bottom: "Mini skirt (sequin/satin)", footwear: "Strappy heels (silver/gold)", accessory: "Clutch bag + statement earrings", styleNote: "Be the room — metallic and shimmer are non-negotiable for summer parties.", tags: ["Glamour", "Sparkle", "Night Out"] },
+        { top: "Embroidered crop top (choli style) with mirror work", bottom: "Flared lehenga skirt (georgette/net)", footwear: "Strappy heels or embellished sandals", accessory: "Chandbali earrings + clutch potli bag", styleNote: "A mirror-work lehenga set makes you the star of any summer celebration — shimmer is your birthright!", tags: ["Festive Glam", "Lehenga", "Statement"] },
       ],
       cold: [
-        { top: "Off-shoulder velvet dress (deep red/emerald)", bottom: "Built-in", footwear: "Strappy heels + sheer tights", accessory: "Diamond tennis bracelet + evening clutch", styleNote: "Velvet is winter glamour royalty — a deep jewel tone will turn every head.", tags: ["Luxury", "Glamour", "Festive"] },
+        { top: "Heavy silk saree (Banarasi/Kanjeevaram) OR velvet lehenga", bottom: "Built-in / petticoat", footwear: "Embroidered heels or juttis", accessory: "Temple jewelry set + potli bag", outerLayer: "Embroidered shawl or regal stole", styleNote: "A Banarasi silk saree or velvet lehenga is Indian luxury at its finest — wear it like the royalty you are.", tags: ["Royal", "Festive", "Luxury Indian"] },
       ],
       rainy: [
-        { top: "Slip dress (satin) + fitted turtleneck underneath", bottom: "Built-in", footwear: "Ankle boots with heel", accessory: "Statement earrings + compact umbrella", outerLayer: "Faux fur stole", styleNote: "Layering a slip dress over a turtleneck is peak 90s-luxe — timeless and weather-proof.", tags: ["Chic", "Layered", "Luxe"] },
+        { top: "Tissue or georgette saree (dark jewel tones)", bottom: "Saree petticoat", footwear: "Block-heel sandals (waterproof friendly)", accessory: "Gold jhumkas + elegant potli", outerLayer: "Embroidered cape blouse", styleNote: "A georgette saree in deep jewel tones is monsoon magic — light fabric that flows beautifully in the rain.", tags: ["Monsoon Saree", "Festive", "Elegant"] },
       ],
     },
     date: {
       hot: [
-        { top: "Floral wrap dress", bottom: "Built-in", footwear: "Block-heel sandals", accessory: "Gold hoops + woven clutch", styleNote: "Wrap dresses are universally flattering and effortlessly romantic — perfect for any date.", tags: ["Romantic", "Feminine", "Summer Love"] },
+        { top: "Floral anarkali kurta (pastel/rose/mint)", bottom: "Built-in flared bottom", footwear: "Embroidered block-heel sandals", accessory: "Gold jhumkas + dainty bracelet", styleNote: "A floral Anarkali is pure romance — the flared silhouette moves beautifully and photographs like a dream.", tags: ["Romantic", "Feminine", "Date Night Desi"] },
       ],
       cold: [
-        { top: "Fitted cashmere sweater (blush/dusty rose)", bottom: "Satin midi skirt", footwear: "Knee-high suede boots", accessory: "Delicate gold jewelry + small evening bag", styleNote: "Blush + satin is pure romance — soft, luxurious, and deeply memorable.", tags: ["Romantic", "Luxury", "Intimate"] },
+        { top: "Pastel cashmere or woolen kurti (blush/lavender)", bottom: "Satin palazzo or churidar", footwear: "Suede block-heel juttis", accessory: "Delicate gold jewelry + small potli", styleNote: "Blush and lavender in soft fabrics is pure Indian romance — warm, gentle, and unforgettable.", tags: ["Romantic", "Cozy Desi", "Intimate"] },
       ],
       rainy: [
-        { top: "Silk blouse (soft colors)", bottom: "Wide-leg satin trousers", footwear: "Block-heel ankle boots", accessory: "Delicate jewelry", outerLayer: "Belted wrap coat (camel)", styleNote: "A camel wrap coat is the most romantic rainy-day layer — it photographs beautifully.", tags: ["Elegant", "Romantic", "Rainy Day"] },
+        { top: "Silk kurta (midnight blue/teal)", bottom: "Wide-leg palazzo (matching)", footwear: "Block-heel chappals", accessory: "Delicate silver jewelry + stole", styleNote: "Monsoon dates under umbrellas are magical — deep teal or midnight blue silk looks stunning in the rain.", tags: ["Monsoon Romance", "Elegant", "Deep Tones"] },
       ],
     },
     travel: {
       hot: [
-        { top: "Linen co-ord set top", bottom: "Linen wide-leg pants (matching)", footwear: "Espadrilles or sandals", accessory: "Straw hat + canvas tote + sunglasses", styleNote: "The linen co-ord is the ultimate travel outfit — effortless, stylish, and breathable.", tags: ["Travel", "Resort", "Effortless"] },
+        { top: "Cotton co-ord kurti-palazzo set", bottom: "Matching cotton palazzo", footwear: "Kolhapuri chappals or flats", accessory: "Straw tote + sunglasses + bandana dupatta", styleNote: "A cotton co-ord set is India's most versatile travel outfit — wear it from temples to cafes without a second thought.", tags: ["Travel India", "Comfortable", "Desi Traveller"] },
       ],
       cold: [
-        { top: "Thermal base layer", bottom: "Insulated leggings", footwear: "Chunky snow-ready boots", accessory: "Faux fur earmuffs + backpack", outerLayer: "Long puffer coat", styleNote: "Fashion meets function — a long puffer coat is the travel winter essential.", tags: ["Winter Travel", "Warm", "Practical"] },
+        { top: "Warm kurti + thermal inner", bottom: "Churidar with woolen socks", footwear: "Closed-toe embroidered boots", accessory: "Pashmina shawl + backpack", outerLayer: "Woolen Himachali jacket or down coat", styleNote: "Hill-station travel demands warmth — a Pashmina shawl doubles as a blanket on cold night buses.", tags: ["Hill Station", "Warm", "Mountain Desi"] },
       ],
       rainy: [
-        { top: "Quick-dry long-sleeve", bottom: "Waterproof joggers", footwear: "Colorful waterproof sneakers", accessory: "Mini backpack + rain hat", outerLayer: "Packable windbreaker (bright color)", styleNote: "Bright colors make rainy travel fun — don't let grey skies dull your outfit.", tags: ["Travel", "Colorful", "Adventure"] },
+        { top: "Quick-dry cotton kurti (dark colors)", bottom: "Dark leggings or churidar", footwear: "Waterproof rubber flats", accessory: "Waterproof tote + compact umbrella", outerLayer: "Bright packable rain jacket", styleNote: "Embrace the Indian monsoon in quick-dry cotton — travel light and let the rain be your adventure.", tags: ["Monsoon Travel", "Practical", "India Explorer"] },
       ],
     },
   },
 };
 
-// ── Mood color mapping ─────────────────────────────────────────
+// ── Mood color mapping (India palette) ────────────────────────
 const moodColorMap: Record<string, { palette: string[]; note: string }> = {
-  confident: { palette: ["Black", "Red", "Deep Navy", "Burgundy"], note: "Bold, rich colors amplify your confidence and command attention." },
-  chill: { palette: ["Earth tones", "Beige", "Sage green", "Dusty blue"], note: "Muted, earthy tones match your relaxed energy perfectly." },
-  romantic: { palette: ["Blush pink", "Dusty rose", "Burgundy", "Champagne"], note: "Soft pinks and roses evoke romance and warmth." },
-  elegant: { palette: ["Ivory", "Champagne", "Black", "Emerald"], note: "Jewel tones and neutrals are the language of understated elegance." },
+  confident: { palette: ["Maroon", "Royal Blue", "Deep Emerald", "Zari Gold"], note: "India's power colors — maroon and royal blue project authority and confidence." },
+  chill: { palette: ["Khadi white", "Earthy terracotta", "Sage green", "Indigo"], note: "Natural, earthy Indic tones — the palette of handloom and calm mornings." },
+  romantic: { palette: ["Rose pink", "Coral", "Champagne gold", "Peacock blue"], note: "Indian romance lives in rose, peacock blue, and gold — soft yet vibrant." },
+  elegant: { palette: ["Ivory silk", "Champagne", "Midnight blue", "Emerald green"], note: "The colors of Banarasi silk and Kanjeevaram — timeless, regal, deeply Indian." },
 };
 
 // ── Body type styling notes ────────────────────────────────────
