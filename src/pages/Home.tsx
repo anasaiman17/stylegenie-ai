@@ -168,7 +168,7 @@ export default function Home() {
                   </div>
                   <h3 className="font-display font-bold text-lg mb-1 text-foreground">{p.profession}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed">{p.desc}</p>
-                  <div className="mt-4 flex items-center gap-1 text-xs font-medium" style={{ color: p.accent }}>
+                  <div className="mt-4 flex items-center gap-1 text-xs font-medium text-primary">
                     Generate outfit <ArrowRight className="w-3 h-3 ml-1" />
                   </div>
                 </div>
