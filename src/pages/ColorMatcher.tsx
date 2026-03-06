@@ -140,7 +140,6 @@ export default function ColorMatcher() {
   );
 }
  
-  const [input, setInput] = useState("");
   const [result, setResult] = useState<ColorMatch | null>(null);
 
   const handleSearch = (color?: string) => {
