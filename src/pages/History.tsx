@@ -128,6 +128,8 @@ export default function History() {
                   {item.tags.map(t => <span key={t} className="tag-badge text-xs">{t}</span>)}
                 </div>
               )}
+              </div>{/* end flex-1 */}
+              </div>{/* end flex items-start */}
             </div>
           ))}
         </div>
