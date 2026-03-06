@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Sparkles, RefreshCw } from "lucide-react";
-import { getChatbotResponse, getRandomFashionTip } from "@/lib/aiEngine";
+import { Send, RefreshCw } from "lucide-react";
+import { getChatbotResponse } from "@/lib/aiEngine";
+import Mannequin from "@/components/Mannequin";
 
 interface Message {
   id: string;
