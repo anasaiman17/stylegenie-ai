@@ -110,7 +110,7 @@ export default function Chatbot() {
               <div className={`max-w-[80%] ${msg.role === "user" ? "max-w-[65%]" : ""}`}>
                 <div className={`rounded-2xl px-4 py-3 ${
                   msg.role === "user"
-                    ? "bg-gradient-to-br from-primary to-purple-700 text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "glass-card"
                 }`}>
                   <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
