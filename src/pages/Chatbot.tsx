@@ -64,6 +64,9 @@ export default function Chatbot() {
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, botMsg]);
+      if (response.outfit && Object.keys(response.outfit).length > 0) {
+        setLastOutfit(response.outfit as Record<string, string>);
+      }
       setTyping(false);
     }, 800 + Math.random() * 600);
   };
