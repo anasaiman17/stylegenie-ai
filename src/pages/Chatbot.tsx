@@ -88,8 +88,8 @@ export default function Chatbot() {
             </div>
             <div>
               <h1 className="font-display text-xl font-bold gradient-text">AI Style Chatbot</h1>
-              <div className="flex items-center gap-1.5 text-xs text-green-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" /> Always online
+              <div className="flex items-center gap-1.5 text-xs" style={{color:"hsl(145 70% 50%)"}}>
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{backgroundColor:"hsl(145 70% 50%)"}} /> Always online
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function Chatbot() {
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || typing}
-            className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-purple-700 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
+            className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
           >
             <Send className="w-4 h-4 text-white" />
           </button>
