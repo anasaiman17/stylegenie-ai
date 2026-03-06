@@ -210,7 +210,8 @@ export default function Chatbot() {
             <Send className="w-4 h-4 text-white" />
           </button>
         </div>
-      </div>
+        </div>{/* end main chat column */}
+      </div>{/* end max-w flex */}
     </div>
   );
 }
