@@ -7,6 +7,7 @@ import {
   type OutfitSuggestion,
   type OutfitHistoryItem,
 } from "@/lib/aiEngine";
+import Mannequin from "@/components/Mannequin";
 
 const genderOptions = ["Male", "Female", "Unisex"];
 const occasionOptions = ["Casual", "Office", "Party", "Date", "Travel"];
@@ -73,16 +74,16 @@ export default function OutfitGenerator() {
 
   return (
     <div className="page-bg min-h-screen pt-24 pb-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-in-up">
           <div className="tag-badge inline-flex mb-4"><Sparkles className="w-3 h-3" /> AI Outfit Generator</div>
           <h1 className="font-display text-4xl sm:text-5xl font-black mb-3 gradient-text">Generate Your Perfect Outfit</h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">Fill in your preferences and let our AI create a personalized outfit recommendation just for you.</p>
+          <p className="text-muted-foreground max-w-xl mx-auto">Fill in your preferences and let our AI create a personalized Indian outfit recommendation just for you.</p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-12 gap-8">
           {/* Form panel */}
-          <div className="lg:col-span-2 glass-card rounded-3xl p-6 space-y-5">
+          <div className="lg:col-span-4 glass-card rounded-3xl p-6 space-y-5 h-fit">
             <h2 className="font-display text-xl font-bold gradient-text">Your Preferences</h2>
 
             {/* Gender */}
@@ -176,14 +177,37 @@ export default function OutfitGenerator() {
             </div>
           </div>
 
+          {/* Mannequin panel */}
+          <div className="lg:col-span-3 flex flex-col items-center">
+            <div className="glass-card rounded-3xl p-6 w-full flex flex-col items-center sticky top-24">
+              <p className="text-xs text-muted-foreground font-semibold mb-4 uppercase tracking-widest">Live Preview</p>
+              {outfit && !loading ? (
+                <Mannequin
+                  size="md"
+                  animate
+                  top={{ label: outfit.top, color: form.colorPreference !== "Custom" ? form.colorPreference : customColor }}
+                  bottom={{ label: outfit.bottom, color: "Navy" }}
+                  shoes={{ label: outfit.footwear, color: "Black" }}
+                  outer={outfit.outerLayer ? { label: outfit.outerLayer, color: "Charcoal" } : undefined}
+                  accessory={{ label: outfit.accessory, color: "Gold" }}
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center py-10 text-center gap-3 opacity-50">
+                  <div className="text-6xl animate-float">👗</div>
+                  <p className="text-muted-foreground text-xs">Outfit preview<br />appears here</p>
+                </div>
+              )}
+            </div>
+          </div>
+
           {/* Result panel */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-5">
             {!outfit && !loading && (
               <div className="glass-card rounded-3xl h-full flex items-center justify-center p-12 text-center">
                 <div>
                   <div className="text-6xl mb-4 animate-float">✨</div>
                   <h3 className="font-display text-2xl font-bold mb-2 gradient-text">Your Outfit Awaits</h3>
-                  <p className="text-muted-foreground">Fill in your preferences and click Generate Outfit to reveal your AI-curated look.</p>
+                  <p className="text-muted-foreground">Fill in your preferences and click Generate Outfit to reveal your AI-curated Indian look.</p>
                 </div>
               </div>
             )}

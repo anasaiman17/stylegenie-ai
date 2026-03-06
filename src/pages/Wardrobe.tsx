@@ -2,26 +2,47 @@ import { useState } from "react";
 import { Plus, Trash2, Sparkles, ShoppingBag } from "lucide-react";
 import { getWardrobe, addToWardrobe, removeFromWardrobe, suggestFromWardrobe } from "@/lib/aiEngine";
 import type { WardrobeItem } from "@/lib/aiEngine";
+import Mannequin from "@/components/Mannequin";
 
-const clothingTypes = ["Shirt", "T-Shirt", "Blouse", "Sweater", "Hoodie", "Pants", "Jeans", "Trousers", "Shorts", "Skirt", "Dress", "Jacket", "Coat", "Shoes", "Sneakers", "Boots", "Heels", "Sandals", "Bag", "Accessory"];
-const colors = ["Black", "White", "Navy", "Grey", "Beige", "Brown", "Red", "Blue", "Green", "Pink", "Yellow", "Purple", "Orange", "Burgundy", "Olive", "Cream"];
+const clothingTypes = ["Shirt", "T-Shirt", "Kurta", "Blouse", "Sweater", "Hoodie", "Pants", "Jeans", "Trousers", "Shorts", "Skirt", "Saree", "Lehenga", "Jacket", "Coat", "Shoes", "Sneakers", "Boots", "Heels", "Sandals", "Jutis", "Bag", "Accessory"];
+const colors = ["Black", "White", "Navy", "Grey", "Beige", "Brown", "Red", "Blue", "Green", "Pink", "Yellow", "Saffron", "Maroon", "Olive", "Cream", "Gold", "Ivory", "Indigo"];
 
 const typeEmoji: Record<string, string> = {
-  shirt: "👔", "t-shirt": "👕", blouse: "👚", sweater: "🧶", hoodie: "🧥",
+  shirt: "👔", "t-shirt": "👕", kurta: "🥻", blouse: "👚", sweater: "🧶", hoodie: "🧥",
   pants: "👖", jeans: "👖", trousers: "👖", shorts: "🩳", skirt: "👗",
-  dress: "👗", jacket: "🧥", coat: "🧥", shoes: "👟", sneakers: "👟",
-  boots: "👢", heels: "👠", sandals: "🩴", bag: "👜", accessory: "💍",
+  saree: "🥻", lehenga: "👗", jacket: "🧥", coat: "🧥", shoes: "👟", sneakers: "👟",
+  boots: "👢", heels: "👠", sandals: "🩴", jutis: "🥿", bag: "👜", accessory: "💍",
 };
+
+// Detect item roles for mannequin preview
+function getTopItem(wardrobe: WardrobeItem[]) {
+  const topTypes = ["shirt", "t-shirt", "kurta", "blouse", "sweater", "hoodie"];
+  return wardrobe.find(i => topTypes.includes(i.type.toLowerCase()));
+}
+function getBottomItem(wardrobe: WardrobeItem[]) {
+  const bottomTypes = ["pants", "jeans", "trousers", "shorts", "skirt", "saree", "lehenga"];
+  return wardrobe.find(i => bottomTypes.includes(i.type.toLowerCase()));
+}
+function getShoesItem(wardrobe: WardrobeItem[]) {
+  const shoeTypes = ["shoes", "sneakers", "boots", "heels", "sandals", "jutis"];
+  return wardrobe.find(i => shoeTypes.includes(i.type.toLowerCase()));
+}
+function getOuterItem(wardrobe: WardrobeItem[]) {
+  return wardrobe.find(i => ["jacket", "coat"].includes(i.type.toLowerCase()));
+}
+function getAccessoryItem(wardrobe: WardrobeItem[]) {
+  return wardrobe.find(i => i.type.toLowerCase() === "accessory");
+}
 
 export default function Wardrobe() {
   const [wardrobe, setWardrobe] = useState<WardrobeItem[]>(getWardrobe());
-  const [form, setForm] = useState({ type: "Shirt", name: "", color: "Black" });
+  const [form, setForm] = useState({ type: "Kurta", name: "", color: "Black" });
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleAdd = () => {
     if (!form.name.trim()) return;
-    const item = addToWardrobe({ type: form.type, name: form.name.trim(), color: form.color });
+    addToWardrobe({ type: form.type, name: form.name.trim(), color: form.color });
     setWardrobe(getWardrobe());
     setForm(f => ({ ...f, name: "" }));
     setSuggestions([]);
@@ -47,16 +68,23 @@ export default function Wardrobe() {
     return acc;
   }, {} as Record<string, WardrobeItem[]>);
 
+  // Mannequin live preview
+  const topItem = getTopItem(wardrobe);
+  const bottomItem = getBottomItem(wardrobe);
+  const shoesItem = getShoesItem(wardrobe);
+  const outerItem = getOuterItem(wardrobe);
+  const accessoryItem = getAccessoryItem(wardrobe);
+
   return (
     <div className="page-bg min-h-screen pt-24 pb-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-in-up">
           <div className="tag-badge inline-flex mb-4"><ShoppingBag className="w-3 h-3" /> Virtual Wardrobe</div>
           <h1 className="font-display text-4xl sm:text-5xl font-black mb-3 gradient-text">My Wardrobe</h1>
-          <p className="text-muted-foreground max-w-xl mx-auto">Add your clothes to your virtual wardrobe and let AI suggest outfit combinations from what you already own.</p>
+          <p className="text-muted-foreground max-w-xl mx-auto">Add your Indian clothes to your virtual wardrobe — watch the mannequin dress up live!</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-4 gap-8">
           {/* Add Item Panel */}
           <div className="glass-card rounded-3xl p-6 space-y-4 h-fit">
             <h2 className="font-display text-xl font-bold gradient-text">Add Clothing Item</h2>
@@ -65,7 +93,7 @@ export default function Wardrobe() {
               <label className="text-sm font-medium text-muted-foreground block mb-2">Item Name</label>
               <input
                 className="input-glass"
-                placeholder="e.g. Slim Fit Oxford Shirt"
+                placeholder="e.g. Banarasi Silk Saree"
                 value={form.name}
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                 onKeyDown={e => e.key === "Enter" && handleAdd()}
@@ -81,7 +109,7 @@ export default function Wardrobe() {
 
             <div>
               <label className="text-sm font-medium text-muted-foreground block mb-2">Color</label>
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {colors.map(c => (
                   <button
                     key={c}
@@ -107,6 +135,29 @@ export default function Wardrobe() {
             <div className="glass-card rounded-xl p-3 text-center">
               <p className="text-3xl font-bold gradient-text">{wardrobe.length}</p>
               <p className="text-xs text-muted-foreground">Items in wardrobe</p>
+            </div>
+          </div>
+
+          {/* Live Mannequin Panel */}
+          <div className="flex flex-col items-center">
+            <div className="glass-card rounded-3xl p-5 w-full sticky top-24 flex flex-col items-center">
+              <p className="text-xs text-muted-foreground font-semibold mb-4 uppercase tracking-widest">Mannequin Preview</p>
+              {wardrobe.length > 0 ? (
+                <Mannequin
+                  top={topItem ? { label: topItem.name, color: topItem.color } : undefined}
+                  bottom={bottomItem ? { label: bottomItem.name, color: bottomItem.color } : undefined}
+                  shoes={shoesItem ? { label: shoesItem.name, color: shoesItem.color } : undefined}
+                  outer={outerItem ? { label: outerItem.name, color: outerItem.color } : undefined}
+                  accessory={accessoryItem ? { label: accessoryItem.name, color: accessoryItem.color } : undefined}
+                  size="md"
+                  animate
+                />
+              ) : (
+                <div className="py-12 text-center opacity-40">
+                  <div className="text-5xl mb-3">🧍</div>
+                  <p className="text-muted-foreground text-xs">Add clothes to<br/>dress the mannequin</p>
+                </div>
+              )}
             </div>
           </div>
 
