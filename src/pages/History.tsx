@@ -64,6 +64,21 @@ export default function History() {
         <div className="space-y-5">
           {filtered.map((item, i) => (
             <div key={item.id} className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all animate-fade-in-up" style={{ animationDelay: `${i * 0.05}s` }}>
+              <div className="flex items-start gap-5 flex-wrap">
+                {/* Mannequin thumbnail */}
+                <div className="flex-shrink-0">
+                  <Mannequin
+                    top={{ label: item.top, color: item.input?.colorPreference || "Navy" }}
+                    bottom={{ label: item.bottom, color: "Navy" }}
+                    shoes={{ label: item.footwear, color: "Black" }}
+                    outer={item.outerLayer ? { label: item.outerLayer } : undefined}
+                    accessory={item.accessory ? { label: item.accessory, color: "Gold" } : undefined}
+                    size="sm"
+                    animate={false}
+                  />
+                </div>
+
+              <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between flex-wrap gap-4 mb-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
