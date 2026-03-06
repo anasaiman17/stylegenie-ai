@@ -33,6 +33,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([welcomeMessage]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [lastOutfit, setLastOutfit] = useState<Record<string, string> | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
