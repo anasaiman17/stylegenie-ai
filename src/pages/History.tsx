@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Trash2, Star, Clock, Filter } from "lucide-react";
 import { getHistory, updateRating } from "@/lib/aiEngine";
 import type { OutfitHistoryItem } from "@/lib/aiEngine";
+import Mannequin from "@/components/Mannequin";
 
 export default function History() {
   const [history, setHistory] = useState<OutfitHistoryItem[]>(getHistory());
