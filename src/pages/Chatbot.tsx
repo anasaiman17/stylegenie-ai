@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Sparkles, RefreshCw } from "lucide-react";
-import { getChatbotResponse, getRandomFashionTip } from "@/lib/aiEngine";
+import { Send, RefreshCw } from "lucide-react";
+import { getChatbotResponse } from "@/lib/aiEngine";
+import Mannequin from "@/components/Mannequin";
 
 interface Message {
   id: string;
@@ -32,6 +33,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([welcomeMessage]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [lastOutfit, setLastOutfit] = useState<Record<string, string> | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,6 +64,9 @@ export default function Chatbot() {
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, botMsg]);
+      if (response.outfit && Object.keys(response.outfit).length > 0) {
+        setLastOutfit(response.outfit as Record<string, string>);
+      }
       setTyping(false);
     }, 800 + Math.random() * 600);
   };
@@ -79,7 +84,35 @@ export default function Chatbot() {
 
   return (
     <div className="page-bg min-h-screen pt-24 pb-6 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto h-[calc(100vh-7rem)] flex flex-col">
+      <div className="max-w-6xl mx-auto h-[calc(100vh-7rem)] flex gap-6">
+        {/* Mannequin Side Panel */}
+        <div className="hidden lg:flex flex-col items-center w-56 flex-shrink-0">
+          <div className="glass-card rounded-3xl p-4 sticky top-24 flex flex-col items-center w-full">
+            <p className="text-xs text-muted-foreground font-semibold mb-3 uppercase tracking-widest">Style Preview</p>
+            {lastOutfit ? (
+              <Mannequin
+                top={lastOutfit.top ? { label: lastOutfit.top } : undefined}
+                bottom={lastOutfit.bottom ? { label: lastOutfit.bottom } : undefined}
+                shoes={lastOutfit.footwear ? { label: lastOutfit.footwear } : undefined}
+                outer={lastOutfit.outerLayer ? { label: lastOutfit.outerLayer } : undefined}
+                accessory={lastOutfit.accessory ? { label: lastOutfit.accessory } : undefined}
+                size="sm"
+                animate
+              />
+            ) : (
+              <div className="py-10 text-center opacity-40">
+                <div className="text-4xl mb-2">🧍</div>
+                <p className="text-xs text-muted-foreground">Chat to see outfit<br/>on mannequin</p>
+              </div>
+            )}
+            {lastOutfit && (
+              <p className="text-xs text-primary text-center mt-2 font-medium">Latest suggestion ✨</p>
+            )}
+          </div>
+        </div>
+
+        {/* Main chat column */}
+        <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
         <div className="glass-card rounded-3xl p-5 mb-4 flex items-center justify-between animate-fade-in-up">
           <div className="flex items-center gap-3">
@@ -88,8 +121,8 @@ export default function Chatbot() {
             </div>
             <div>
               <h1 className="font-display text-xl font-bold gradient-text">AI Style Chatbot</h1>
-              <div className="flex items-center gap-1.5 text-xs text-green-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" /> Always online
+              <div className="flex items-center gap-1.5 text-xs" style={{color:"hsl(145 70% 50%)"}}>
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{backgroundColor:"hsl(145 70% 50%)"}} /> Always online
               </div>
             </div>
           </div>
@@ -110,7 +143,7 @@ export default function Chatbot() {
               <div className={`max-w-[80%] ${msg.role === "user" ? "max-w-[65%]" : ""}`}>
                 <div className={`rounded-2xl px-4 py-3 ${
                   msg.role === "user"
-                    ? "bg-gradient-to-br from-primary to-purple-700 text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "glass-card"
                 }`}>
                   <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
@@ -172,12 +205,13 @@ export default function Chatbot() {
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || typing}
-            className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-purple-700 flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
+            className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center transition-all hover:scale-105 disabled:opacity-40"
           >
             <Send className="w-4 h-4 text-white" />
           </button>
         </div>
-      </div>
+        </div>{/* end main chat column */}
+      </div>{/* end max-w flex */}
     </div>
   );
 }
