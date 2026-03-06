@@ -154,40 +154,27 @@ export default function Mannequin({
 
         {/* ── Outfit labels on mannequin ── */}
         {top && (
-          <foreignObject x="30" y="58" width="40" height="18">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              style={{
-                fontSize: "4.5px",
-                fontWeight: 700,
-                color: textColor(topColor !== "transparent" ? topColor : "#333"),
-                textAlign: "center",
-                lineHeight: "1.1",
-                wordBreak: "break-word",
-                padding: "1px",
-              }}
-            >
-              {top.label.length > 18 ? top.label.slice(0, 18) + "…" : top.label}
-            </div>
-          </foreignObject>
+          <text
+            x="50" y="68"
+            textAnchor="middle"
+            fontSize="4.2"
+            fontWeight="700"
+            fill={textColor(topColor !== "transparent" ? topColor : "#333")}
+          >
+            {top.label.length > 16 ? top.label.slice(0, 16) + "…" : top.label}
+          </text>
         )}
 
         {bottom && (
-          <foreignObject x="30" y="118" width="40" height="18">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              style={{
-                fontSize: "4.5px",
-                fontWeight: 700,
-                color: textColor(bottomColor !== "transparent" ? bottomColor : "#333"),
-                textAlign: "center",
-                lineHeight: "1.1",
-                wordBreak: "break-word",
-              }}
-            >
-              {bottom.label.length > 18 ? bottom.label.slice(0, 18) + "…" : bottom.label}
-            </div>
-          </foreignObject>
+          <text
+            x="50" y="128"
+            textAnchor="middle"
+            fontSize="4.2"
+            fontWeight="700"
+            fill={textColor(bottomColor !== "transparent" ? bottomColor : "#333")}
+          >
+            {bottom.label.length > 16 ? bottom.label.slice(0, 16) + "…" : bottom.label}
+          </text>
         )}
       </svg>
 
